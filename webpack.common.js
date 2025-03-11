@@ -2,6 +2,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -14,6 +15,11 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './src/template.html',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'src/assets/images', to: 'assets/images' }, // Kopiert die Icons nach dist/assets/images/
+      ],
     }),
   ],
   module: {
